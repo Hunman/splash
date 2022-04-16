@@ -38,12 +38,14 @@ if (BUILD_TESTS)
 
     add_executable(
         Test
-        tests/test.cpp
+        tests/Bitmap.cpp
+        tests/Colour.cpp
     )
 
     target_link_libraries(
         Test
         GTest::Main
+        libSplash
     )
 
     include(GoogleTest)
