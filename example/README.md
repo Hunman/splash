@@ -8,4 +8,4 @@ This example program reads a 24-bit bitmap image and prints out the generated RG
 ./example <path-to-image>
 ```
 
-If `<path-to-image>` is not specified the program will use `images/mountain.bmp`. **This is a relative path!**
+If `<path-to-image>` is not specified the program will use `images/mountain.bmp`. **This is a compile-time absolute path!**

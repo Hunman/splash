@@ -8,6 +8,11 @@ option(
     "Fetch and build gtest as a dependency"
     ON
 )
+option(
+    BUILD_EXAMPLES
+    "Build the example"
+    OFF
+)
 
 # pkg-config for dependencies
 find_package(PkgConfig REQUIRED)
@@ -19,7 +24,7 @@ file(GLOB SourceFiles
     source/target/*.cpp
 )
 include_directories(include/)
-add_library(libSplash SHARED ${SourceFiles})
+add_library(Splash STATIC ${SourceFiles})
 
 # Testing
 if (BUILD_TESTS)
@@ -45,9 +50,16 @@ if (BUILD_TESTS)
     target_link_libraries(
         Test
         GTest::Main
-        libSplash
+        Splash
     )
 
     include(GoogleTest)
     gtest_discover_tests(Test)
+endif()
+
+if (BUILD_EXAMPLES)
+    include_directories(example/include)
+    add_compile_definitions(Example PRIVATE DEFAULT_IMAGE="${PROJECT_SOURCE_DIR}/example/images/mountain.bmp")
+    add_executable(Example example/source/main.cpp)
+    target_link_libraries(Example Splash)
 endif()

@@ -2,7 +2,9 @@
 #include "splash/Splash.hpp"
 
 // Path to default image
+#ifndef DEFAULT_IMAGE
 #define DEFAULT_IMAGE "images/mountain.bmp"
+#endif
 
 int main(int argc, char * argv[]) {
     // Read the default image if a path is not specified
